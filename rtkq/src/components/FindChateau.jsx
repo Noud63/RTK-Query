@@ -17,17 +17,16 @@ const FindChateau = () => {
     const form = e.target
     let formData = new FormData(form);
     for (let value of formData.values()) {
-         if(value !== "" && value.startsWith("Château")){
-         setName(value)
-         setShowNoShow(true)
-         form.reset()
-        }else if(!name || value === "" || !value.startsWith("Château")){
-        // alert("Enter correct name Château!")
+          if(value !== "" && value.startsWith("Château")){
+          setName(value)
+          setShowNoShow(true)
+          form.reset()
+        }else {
           form.reset()
           setName("")
-         setShowNoShow(false)
-         setMessage("")
-         setOverlay(true)
+          setShowNoShow(false)
+          setMessage("")
+          setOverlay(true)
         }
       }
   }
@@ -58,7 +57,7 @@ const FindChateau = () => {
 
       {isLoading && <div>Loading...</div>}
 
-      <div className="mt-8  text-red-800">
+      <div className="mt-8  text-red-800 mb-6">
         {data && showNoShow && !message ? (
           <>
           <div>Name: {data.name}</div>
@@ -68,7 +67,7 @@ const FindChateau = () => {
           <div>Price: ${data.price}</div>
           <img src={Array.isArray(data.img) ? `../images/${data.img[0]}` : `../images/${data.img}`} alt="" className="w-80 mt-4"/> 
           </>
-         ) : (<div className="w-full text-red-800 font-semibold text-xl flex justify-center">{message}</div>)
+         ) : (<div className="w-full text-red-800 font-semibold text-xl flex justify-center mb-6">{message}</div>)
         }
       </div>
      

@@ -24,3 +24,29 @@ input[type="text"]::placeholder {
 .btn {
     width: 100%;
 }
+
+input,
+select {
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: darkred;
+  background-clip: text !important;
+}
+
+.react-select .select__placeholder {
+  color: darkred;
+}
+
+.react-select .select__single-value {
+color: #c10005;
+font-size: 1.2rem;
+}
+
+.react-select .select__indicator-separator {
+background-color: #c10005;
+}
+
+.css-tj5bde-Svg {
+fill: #c10005 !important}
+
+.css-b62m3t-container {
+border: 1px solid red !important;}

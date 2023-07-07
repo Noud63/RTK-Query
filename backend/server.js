@@ -16,7 +16,8 @@ app.use(express.json())                        /* only for POST and PUT => json 
 app.use(express.urlencoded({extended :true}))  /* only for POST and PUT => strings or arrays*/
 
 app.use('/api/realestates', realestatesRoute)
-// app.use('/api/realestates/:id', realestatesRoute)
+app.use('/api/realestate', realestatesRoute)
+app.use('/api/realestates', realestatesRoute)
 
 
 app.listen( PORT, () => console.log(`Server running on port: ${PORT}` .yellow) )

@@ -4,7 +4,7 @@ const GetInfo = ({name}) => {
 
     const [ name2, setName ] = useState("")
     const [ showNoShow, setShowNoShow ] = useState(false)
-    const { data } = useGetEstateByNameQuery(name2)
+    const { data, isLoading } = useGetEstateByNameQuery(name2)
 
     const showInfo = () => {
         setName(name)
@@ -26,6 +26,7 @@ const GetInfo = ({name}) => {
           : 
           ("")
          }
+         {isLoading && <h3 className="text-red-600">Loading....</h3>}
     </>
     )
 }
