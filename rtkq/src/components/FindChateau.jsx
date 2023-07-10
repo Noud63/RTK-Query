@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { useGetEstateByNameQuery } from '../slices/apiSlice.js'
 import Overlay from './Overlay.jsx'
-
+import close from '/images/close.png'
 
 const FindChateau = () => {
 
@@ -37,6 +37,10 @@ const FindChateau = () => {
      console.log(data)
   }
   },[data, setMessage])
+
+  const closeSearchResult = () => {
+    setShowNoShow(false)
+  }
   
 
   return (
@@ -57,15 +61,19 @@ const FindChateau = () => {
 
       {isLoading && <div>Loading...</div>}
 
-      <div className="mt-8  text-red-800 mb-6">
+      <div className="mt-8  text-red-800 mb-6 flex flex-row relative">
         {data && showNoShow && !message ? (
           <>
+         
+          <div>
           <div>Name: {data.name}</div>
           <div>Region: {data.region}</div>
           <div>City: {data.city}</div>
           <div>Location: {data.located}</div>
           <div>Price: ${data.price}</div>
           <img src={Array.isArray(data.img) ? `../images/${data.img[0]}` : `../images/${data.img}`} alt="" className="w-80 mt-4"/> 
+          </div>
+           <div className="absolute top-2 right-0 cursor-pointer" onClick={closeSearchResult}><img src={close} alt="" className="w-6"/></div>
           </>
          ) : (<div className="w-full text-red-800 font-semibold text-xl flex justify-center mb-6">{message}</div>)
         }

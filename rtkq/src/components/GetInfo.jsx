@@ -4,7 +4,7 @@ const GetInfo = ({name}) => {
 
     const [ name2, setName ] = useState("")
     const [ showNoShow, setShowNoShow ] = useState(false)
-    const { data, isLoading } = useGetEstateByNameQuery(name2)
+    const { data } = useGetEstateByNameQuery(name2)
 
     const showInfo = () => {
         setName(name)
@@ -21,12 +21,11 @@ const GetInfo = ({name}) => {
           <div>City: {data.city}</div>
           <div>Location: {data.located}</div>
           <div>Price: ${data.price}</div> 
-          <img src={Array.isArray(data.img) ? `../images/${data.img[0]}` : `../images/${data.img}`} alt="" className="w-80 mt-4"/> 
+          <img src={Array.isArray(data.img) && `/images/${data.img[0]}`} alt="" className="w-80 mt-4"/> 
           </div>) 
           : 
           ("")
          }
-         {isLoading && <h3 className="text-red-600">Loading....</h3>}
     </>
     )
 }

@@ -49,4 +49,21 @@ background-color: #c10005;
 fill: #c10005 !important}
 
 .css-b62m3t-container {
-border: 1px solid red !important;}
+border: 1px solid red !important;
+}
+
+::-webkit-scrollbar: {
+      width: 8px;
+      height: 0px;
+    },
+::-webkit-scrollbar-track: {
+      background: black;
+      borderRadius: 10px;
+    },
+::-webkit-scrollbar-thumb: {
+      background: darkred;
+      borderRadius: 10px;
+    },
+::-webkit-scrollbar-thumb:hover: {
+      background: #c10005;
+    }  

@@ -1,6 +1,5 @@
 import React,{useEffect, useState} from 'react'
-import { useGetRealestatesQuery, useGetLimitedResultsQuery } from '../slices/apiSlice'
-import FindChateau from './FindChateau'
+import { useGetLimitedResultsQuery } from '../slices/apiSlice'
 import GetInfo from './getInfo'
 import Select from "react-select";
 
@@ -18,12 +17,6 @@ const selectOptions = [
 ];
 
 const colourStyles = {
-  // placeholder: defaultStyles => {
-  //   return {
-  //     ...defaultStyles,
-  //     color: "darkred",
-  //   };
-  // },
   menuList: styles => ({
     ...styles,
     background: 'black',
@@ -44,17 +37,6 @@ const colourStyles = {
       background: "#c10005"
     }
   }),
-   
-//   control : styles => ({
-//  ...styles,
-//  "&:hover": {
-//         borderColor: "red",
-//       },
-//     background: 'black',
-//     borderColor: "darkred",
-//     width: "320px",
-//     zIndex: -0
-//   }),
   option: (styles, { isFocused, isSelected }) => ({
     ...styles,
     color:"red",
@@ -85,25 +67,12 @@ const colourStyles = {
 })
 }
 
-const GetRealEstates = () => {
+const LimitedResults = () => {
 
 const [ number, setNumber ] = useState({ label: 3, value: 3 })
 console.log(number.value)
 
-// const { data, error, isLoading } = useGetRealestatesQuery()
-// const [ slices, setSlices ] = useState(5)
-// const [ currentSlice, setCurrentSlice ] = useState(0)
-const { data, isLoading} = useGetLimitedResultsQuery(number.value)
-
-// const getLimRes = () => {
-// if(limitedResults){
-//   console.log(limitedResults[3])
-//  }
-// }
-
-// useEffect(()=> {
-//  getLimRes()
-// },[getLimRes])
+const { data, isLoading, error} = useGetLimitedResultsQuery(number.value)
 
 return (
   <>
@@ -123,8 +92,7 @@ return (
         <div>
 
         </div>
-       <FindChateau/>
-       <div className="w-80 text-red-800 mb-2 text-lg font-semibold">Number of results:</div>
+       <div className="w-80 text-red-800 mb-2 mt-8 text-lg font-semibold">Number of results:</div>
       <Select
        styles={colourStyles}
         isClearable={false}
@@ -142,4 +110,4 @@ return (
   )
 }
 
-export default GetRealEstates
+export default LimitedResults

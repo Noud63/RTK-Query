@@ -1,5 +1,5 @@
 import React from 'react'
-import closeIcon from '../../images/close.png'
+import closeIcon from '/images/close.png'
 
 const Overlay = ({setOverlay}) => {
     const closeModal = () => {
