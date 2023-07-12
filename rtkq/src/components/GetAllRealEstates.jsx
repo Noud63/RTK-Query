@@ -14,14 +14,16 @@ return (
         {error && <img src={loader} alt="loader" className="w-80"/>}
        {data && data.map( (estate, index) => {
         const { _id, name, city, region, } = estate
-        return (
+       return (
               <div key={index} className="w-80 flex flex-col">
+                
                  <div className="w-80 text-lg text-red-800 flex justify-start">Estate:
                  <span className="font-semibold">&nbsp;{name}</span>
                  </div>
                     <GetInfo name={name}/>
               </div>
             )
+       
        })}
     </div>
   </>
