@@ -1,24 +1,17 @@
 import React,{useEffect, useState} from 'react'
-import { useGetAllRealestatesQuery, useGetLimitedResultsQuery } from '../slices/apiSlice'
-import FindChateau from './FindChateau'
+import { useGetAllRealestatesQuery } from '../slices/apiSlice'
 import GetInfo from './getInfo'
-import Select from "react-select";
+import loader from '../assets/loader.gif'
 
-
-const GetAllRealEstates = () => {
-
-const [ number, setNumber ] = useState({ label: 3, value: 3 })
-console.log(number.value)
+const GetRealEstates = () => {
 
 const { data, error, isLoading } = useGetAllRealestatesQuery()
-// const [ slices, setSlices ] = useState(5)
-// const [ currentSlice, setCurrentSlice ] = useState(0)
-
-// const { data, isLoading, error} = useGetLimitedResultsQuery(number.value)
 
 return (
   <>
     <div className="w-full h-full flex items-center flex-col mt-16">
+      <div className="w-80 text-red-800 text-2xl flex justify-center border border-red-800 p-2 items-center mb-6">All Real Estates</div>
+        {error && <img src={loader} alt="loader" className="w-80"/>}
        {data && data.map( (estate, index) => {
         const { _id, name, city, region, } = estate
         return (
@@ -26,21 +19,13 @@ return (
                  <div className="w-80 text-lg text-red-800 flex justify-start">Estate:
                  <span className="font-semibold">&nbsp;{name}</span>
                  </div>
-                        {isLoading && <h3>Loading....</h3>}
                     <GetInfo name={name}/>
               </div>
             )
        })}
-        <div>
-
-        </div>
-       {/* <FindChateau/> */}
-      
     </div>
-    
-     
   </>
   )
 }
 
-export default GetAllRealEstates
+export default GetRealEstates

@@ -73,7 +73,7 @@ const SpecificRealestates = () => {
                 <div>City: {data.city}</div>
                 <div>Location: {data.located}</div>
                 <div>Price: ${data.price}</div>
-                <img src={Array.isArray(data.img) ? `../images/${data.img[0]}` : `../images/${data.img}`} alt="" className="w-80 mt-4"/> 
+                <img src={Array.isArray(data.img) ? `../images/${data.img[0]}` : `../images/${data.img}`} alt="" className="w-80 mt-4 border-4 border-red-800"/> 
                 </div>
                 <div className="absolute top-2 right-0 cursor-pointer" onClick={closeSearchResult}><img src={close} alt="" className="w-6"/></div>
                 </>

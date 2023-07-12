@@ -148,8 +148,37 @@ const data = [
         map: '/assets/maps/occitanie.png',
         located: 'South',
         like: false,
+    },
+     {
+        name: 'Château d\'If',
+        img: ['c11.jpg'],
+        price: 'Not for Sale',
+        region: 'Provence-Alpes-Côte d\'Azur',
+        departement: 'Bouches-du-Rhône',
+        city: 'Marseille',
+        bedrooms: '21',
+        bathrooms: '4',
+        livingspace: '650',
+        area: '6',
+        map: '/assets/maps/provence.png',
+        located: 'South',
+        like: false,
+    },
+     {
+        name: 'Château de Lourmarin',
+        img: ['c12.jpg'],
+        price: '8.678.000',
+        region: 'Provence-Alpes-Côte d\'Azur',
+        departement: 'Vaucluse',
+        city: 'Lourmarin',
+        bedrooms: '14',
+        bathrooms: '6',
+        livingspace: '580',
+        area: '8',
+        map: '/assets/maps/provence.png',
+        located: 'South',
+        like: false,
     }
-
 ]
 
 export default data

@@ -10,7 +10,10 @@ body {
     position: relative;
 }
 
-input[type="text"]{
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"]{
     text-decoration: none;
     border: 1px solid darkred;
     padding: 4px;

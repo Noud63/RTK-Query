@@ -9,7 +9,7 @@ const ListOfChateaux = () => {
                         <div className="flex items-center flex-row flex-wrap border-b-2 border-red-800 pb-4 pl-8">
                             {chateaux && chateaux.map((chateau,index) => {
                             return (
-                                <div key={index} className="text-xl text-red-800 flex flex-row">
+                                <div key={index} className="text-xl text-red-800 flex flex-row pl-1">
                                     <div>{chateau.name},</div>
                                 </div>
                                )

@@ -9,7 +9,7 @@ export default {
       screens: {
         twelfh : "1200px",
         eighth : "800px",
-        fiveSixty : "560px",
+        sevenh : "700px",
         fiveh  :  "500px"
       }
     },
