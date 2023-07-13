@@ -27,7 +27,6 @@ const upLoadData = e => {
     try {
         const res = await addRealestate(data)
         console.log(res.data)
-
     } catch (error) {
         console.log(error.message)
     }

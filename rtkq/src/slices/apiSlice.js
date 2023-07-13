@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const realEstatesApi = createApi({
     reducerPath: "realestatesApi",
     baseQuery : fetchBaseQuery({ baseUrl: "http://localhost:5000/"}),
-    tagTypes:['Realestates'],
+    tagTypes:['Realestates', 'Users'],
     endpoints: (builder)=> ({
         getAllRealestates: builder.query({       /* 'mutation' if you want to delete, update, post etc */
             query: () => `api/realestates/`,
@@ -27,11 +27,34 @@ export const realEstatesApi = createApi({
              body: estate
             }),
             invalidatesTags: ['Realestates']
+        }),
+        registerUser: builder.mutation({
+            query: (user) => ({
+                url: 'api/users',
+                method: 'POST',
+                body: user
+            }),
+            invalidatesTags: ['Users']
+        }),
+        loginUser: builder.mutation({
+            query: (user) => ({
+                url: 'api/users/login',
+                method: 'POST',
+                body: user
+            }),
+            invalidatesTags: ['Users']
         })
     })
 })
 
-export const { useGetAllRealestatesQuery, useGetEstateByNameQuery, useGetLimitedResultsQuery, useAddRealestateMutation } = realEstatesApi
+export const { 
+    useGetAllRealestatesQuery, 
+    useGetEstateByNameQuery, 
+    useGetLimitedResultsQuery, 
+    useAddRealestateMutation, 
+    useRegisterUserMutation,
+    useLoginUserMutation 
+} = realEstatesApi
 
 /* ProvidesTags is for query endpoints to caches */
 /* invalidatesTags is for mutation endpoint to remove from caches */

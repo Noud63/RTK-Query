@@ -4,7 +4,8 @@ import colors from 'colors'
 import cors from 'cors'
 dotenv.config()
 import realestatesRoute from './routes/realestatesRoute.js'
-import addDataToCollection from './seeder.js'
+import usersRoute from './routes/usersRoute.js'
+// import addDataToCollection from './seeder.js'
 const PORT = process.env.PORT || 5000
 import connectDB from './dbConfig/connectDB.js'
 
@@ -18,6 +19,7 @@ app.use(express.urlencoded({extended :true}))  /* only for POST and PUT => strin
 
 app.use('/api/realestates', realestatesRoute)
 app.use('/api/realestate', realestatesRoute)
+app.use('/api/users', usersRoute)
 
 
 app.listen( PORT, () => console.log(`Server running on port: ${PORT}` .yellow))

@@ -1,19 +1,40 @@
 import React,{useState} from 'react'
+import { useRegisterUserMutation } from '../slices/apiSlice'
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 
 const Signup = () => {
 
-  const [ name, setName ] = useState("")
-  const [ email, setEmail ] = useState("")
-  const [ password, setPassword ] = useState("")
-  const [ repeatPassword, setRepeatPassword ] = useState("")
+  const [ data, setData ] = useState({})
 
-  const onSubmitHandler = (e) => {
-    e.preventDefault()
-    console.log({name:name, email:email, password:password})
+  const [ registerUser,  ] = useRegisterUserMutation()
+
+  const register = (e) => {
+         setData({
+          ...data,
+          [e.target.name] : e.target.value
+         })
   }
 
+  const onSubmitHandler = async(e) => {
+    e.preventDefault()
+    if(data.password !== data.repeatPassword){
+         toast.error('Passwords do not match!')
+    }else{
+    try{
+     const res = await registerUser({name:data.name, email:data.email, password:data.password}).unwrap()
+    } catch(error) {
+        toast.error(error)
+    }
+    e.target.reset()
+    }
+    
+}
+
   return (
+    
     <div className="w-72 m-auto flex justify-center flex-col items-center mt-8">
+      <ToastContainer />
       <span className="text-red-800 text-2xl mb-4">Signup</span>
       
         <form onSubmit={onSubmitHandler} className="text-red-800 w-full">
@@ -23,8 +44,8 @@ const Signup = () => {
             type="text" 
             name="name"
             placeholder="Enter name"
-            defaultValue={name}
-            onChange={(e)=> setName(e.target.value)}
+            id="name"
+            onChange={register}
             required
             />
           
@@ -34,8 +55,8 @@ const Signup = () => {
             type="email" 
             name="email"
             placeholder="Enter email"
-            defaultValue={email}
-            onChange={(e)=> setEmail(e.target.value)}
+            id="email"
+            onChange={register}
             required
             />
           
@@ -45,25 +66,24 @@ const Signup = () => {
             type="password"
             name="password"
             placeholder="Enter password"
-            defaultValue={password}
-            onChange={(e)=> setPassword(e.target.value)} 
+            id="password"
+            onChange={register} 
             required
             />
 
-            <label htmlFor="repeat password">Repeat password:</label>
+            <label htmlFor="repeatPassword">Repeat password:</label>
             <input
             className="mb-3" 
             type="password"
-            name="repeat password"
+            name="repeatPassword"
             placeholder="Repeat password"
-            defaultValue={repeatPassword}
-            onChange={(e)=> setPassword(e.target.value)} 
+            id="repeatPassword"
+            onChange={register} 
             />
           
           <button type="submit" className="w-full bg-red-800 mt-4 p-2 text-lg text-black font-semibold">Submit</button>
         </form>
       </div>
-    
   )
 }
 
