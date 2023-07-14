@@ -34,8 +34,8 @@ const upLoadData = e => {
   }
 
   return (
-    <div className="w-72 m-auto flex justify-center flex-col items-center mt-8">
-      <span className="text-red-800 text-2xl mb-4">Add Estate to database</span>
+    <div className="w-80 m-auto flex justify-center flex-col items-center mt-8">
+       <div className="w-80 text-red-800 text-2xl flex justify-center border border-red-800 p-2 items-center mb-6">Upload Estate</div>
       
         <form onSubmit={onSubmitHandler} className="text-red-800 w-full">
 

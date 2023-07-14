@@ -49,7 +49,7 @@ const SpecificRealestates = () => {
     <ListOfChateaux />
     
       <div className="w-80 flex justify-center flex-col mt-4 mb-8 m-auto">
-            <div className="text-lg h-10 text-red-800 bg-black font-semibold">Find info on Château:</div>
+            <div className="w-80 text-red-800 text-2xl flex justify-center border border-red-800 p-2 items-center mb-6">Find Specific Estate</div>
             <form onSubmit={submitHandler}>
                 <label>
                         <input 

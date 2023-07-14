@@ -26,9 +26,10 @@ const Signin = () => {
     
       try {
         const res = await loginUser({email:data.email, password: data.password}).unwrap()
-        console.log(res)
+        /* unwrap() because res => { data : { }} */
+       
         dispatch(setCredentials({email:res.email, name:res.name}))
-        // navigate('/')
+        navigate('/')
         toast.success('Loggedin successfuly!')
       } catch (error) {
         toast.error(error)
@@ -38,7 +39,6 @@ const Signin = () => {
 
   return (
     <div className="w-72 m-auto flex justify-center flex-col items-center mt-8">
-      <ToastContainer />
       <span className="text-red-800 text-2xl mb-4">Signin</span>
       
         <form onSubmit={onSubmitHandler} className="text-red-800 w-full">

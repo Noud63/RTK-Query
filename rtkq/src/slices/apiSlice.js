@@ -43,6 +43,21 @@ export const realEstatesApi = createApi({
                 body: user
             }),
             invalidatesTags: ['Users']
+        }),
+        logout: builder.mutation({
+            query: () => ({
+                url: 'api/users/logout',
+                method: 'POST'
+            }),
+            invalidatesTags: ['Users']
+        }),
+        updateCredentials: builder.mutation({
+            query: (credentials) => ({
+                url: 'api/users/update',
+                method: 'PUT',
+                body: credentials
+            }),
+            invalidatesTags: ['Users']
         })
     })
 })
@@ -53,7 +68,9 @@ export const {
     useGetLimitedResultsQuery, 
     useAddRealestateMutation, 
     useRegisterUserMutation,
-    useLoginUserMutation 
+    useLoginUserMutation,
+    useLogoutMutation,
+    useUpdateCredentialsMutation
 } = realEstatesApi
 
 /* ProvidesTags is for query endpoints to caches */
