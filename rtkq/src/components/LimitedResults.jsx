@@ -1,5 +1,5 @@
 import React,{useEffect, useState} from 'react'
-import { useGetLimitedResultsQuery } from '../slices/apiSlice'
+import { useGetLimitedResultsQuery } from '../slices/realestatesSlice'
 import GetInfo from './getInfo'
 import Select from "react-select";
 
@@ -70,7 +70,6 @@ const colourStyles = {
 const LimitedResults = () => {
 
 const [ number, setNumber ] = useState({ label: 3, value: 3 })
-console.log(number.value)
 
 const { data, isLoading, error} = useGetLimitedResultsQuery(number.value)
 
@@ -100,7 +99,7 @@ return (
         className="react-select"
         classNamePrefix="select"
         options={selectOptions}
-        onChange={(chioce) => setNumber(chioce)}
+        onChange={(choice) => setNumber(choice)}
       />
     
           

@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
-import { useLoginUserMutation } from '../slices/apiSlice'
-import { ToastContainer, toast } from "react-toastify";
+import { useLoginUserMutation } from '../slices/usersSlice'
+import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 import { useDispatch } from 'react-redux';
 import { setCredentials } from '../features/loginSlice';

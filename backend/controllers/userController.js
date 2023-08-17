@@ -16,22 +16,21 @@ const registerUser = asyncHandler(async(req,res) => {
         res.status(400).send("user already registered!")
     }
 
-    // const salt = await bcrypt.genSalt(10)
-    // const hashedPassword = await bcrypt.hash(password, salt)
-
     const user = await User.create({
         name, 
         email, 
-        password //hashedpassword 
+        password, //hashedpassword 
+        isAdmin
     })
 
     if(user){
-        generateToken(res, user._id)
+        generateToken(res, user._id);
         res.status(201).json({
             _id: user._id,
             name: user.name,
             email: user.email,
-        })
+            isAdmin: user.isAdmin
+        });
     }else{
         res.status(400).send("Invalid user data!")
     }
@@ -49,7 +48,8 @@ const loginUser = asyncHandler(async(req, res)=> {
           res.status(201).json({
             _id: user._id,
             name: user.name,
-            email: user.email
+            email: user.email,
+            isAdmin: user.isAdmin
           })
       }else{
         res.status(400).send('Invalid email or password!')

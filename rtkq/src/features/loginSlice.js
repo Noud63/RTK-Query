@@ -11,7 +11,7 @@ const loginSlice = createSlice({
     reducers: {
         setCredentials: (state, action) => {
            state.userInfo = action.payload
-           state.isLoggedIn= true
+           state.isLoggedIn = true
            localStorage.setItem('userInfo', JSON.stringify({...action.payload, isLoggedIn:true}))
         },
         logOut: ( state, action) => {

@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import { useGetEstateByNameQuery } from '../slices/apiSlice'
+import { useGetEstateByNameQuery } from '../slices/realestatesSlice'
 import loader from '../assets/loader.gif'
 const GetInfo = ({name}) => {
 

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { useGetEstateByNameQuery } from '../slices/apiSlice.js'
+import { useGetEstateByNameQuery } from '../slices/realestatesSlice.js'
 import Overlay from './Overlay.jsx'
 import close from '/images/close.png'
 import ListOfChateaux from './ListOfChateaux.jsx'

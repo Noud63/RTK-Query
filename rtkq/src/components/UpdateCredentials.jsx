@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from 'react'
-import { useUpdateCredentialsMutation } from '../slices/apiSlice'
+import { useUpdateCredentialsMutation, useLogoutMutation } from '../slices/usersSlice'
 import { toast } from "react-toastify";
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -18,6 +18,7 @@ const UpdateCredentials = () => {
   const { userInfo, isLoggedIn } = user
   
   const [ updateCredentials  ] = useUpdateCredentialsMutation()
+  const [ logout  ] = useLogoutMutation()
 
   const navigate = useNavigate()
 
@@ -27,6 +28,7 @@ const UpdateCredentials = () => {
    setPassword(userInfo.password)
    setRepeatPassword(userInfo.password)
    },[userInfo.name, userInfo.email, userInfo.password, userInfo.password])
+   
 
   const register = (e) => {
      setData({
@@ -46,14 +48,14 @@ const UpdateCredentials = () => {
       email:data.email, 
       password:data.password}).unwrap()
      toast.success('Successful updated!')
+     logout()
      navigate('/signin')
     } catch(error) {
         toast.error(error)
     }
     e.target.reset()
     }
-    
-}
+  }
 
   return (
     
@@ -90,7 +92,7 @@ const UpdateCredentials = () => {
             className="mb-3" 
             type="password"
             name="password"
-            placeholder="Enter password"
+            placeholder="Enter new password"
             defaultValue={password}
             id="password"
             onChange={register} 
@@ -102,7 +104,7 @@ const UpdateCredentials = () => {
             className="mb-3" 
             type="password"
             name="repeatPassword"
-            placeholder="Repeat password"
+            placeholder="Repeat new password"
             defaultValue={repeatPassword}
             id="repeatPassword"
             onChange={register} 

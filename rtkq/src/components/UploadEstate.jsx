@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import { useAddRealestateMutation } from '../slices/apiSlice'
+import { useAddRealestateMutation } from '../slices/realestatesSlice'
 
 const UploadEstate = () => {
 

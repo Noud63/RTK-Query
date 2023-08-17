@@ -1,5 +1,5 @@
 import React,{useEffect, useState} from 'react'
-import { useGetAllRealestatesQuery } from '../slices/apiSlice'
+import { useGetAllRealestatesQuery } from '../slices/realestatesSlice'
 import GetInfo from './getInfo'
 import loader from '../assets/loader.gif'
 
